@@ -19,8 +19,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import org.w3c.dom.Text;
-
 import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -38,9 +36,9 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         // Initalize Widgets:
-        userET = findViewById(R.id.edit_username);
-        passET = findViewById(R.id.edit_password);
-        emailET = findViewById(R.id.edit_email);
+        userET = findViewById(R.id.edit_register_username);
+        passET = findViewById(R.id.edit_register_password);
+        emailET = findViewById(R.id.edit_register_email);
         registerButton = findViewById(R.id.button_register);
 
         // Firebase Auth
