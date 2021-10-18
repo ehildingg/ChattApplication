@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "401128497350",
+    "project_id": "chattapplication-57341",
+    "storage_bucket": "chattapplication-57341.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401128497350:android:c7329605bcbad02374f7c7",
+        "android_client_info": {
+          "package_name": "com.ehilding.chattapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401128497350-2ugka0uktfmin5vl7rdksb7qmld47dk2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCZ5a_ipNkHzFQTxwrWXjFaulmoT6BYaY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "401128497350-2ugka0uktfmin5vl7rdksb7qmld47dk2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
