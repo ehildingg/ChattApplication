@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -23,6 +24,24 @@ public class LoginActivity extends AppCompatActivity {
 
     // Firebase:
     FirebaseAuth auth;
+    FirebaseUser  firebaseUser;
+
+
+    // Bättre att ha denna koden i onStart av någon anledning, vet inte exakt varför.
+    // Garanterat att man stannar inloggad hela tiden.
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Tar in nuvarande användare i firebaseUser
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        // Checking for user existance. Om firebaseUser finns sparad och inte är null, gå direkt till MainActivity...
+        if (firebaseUser != null) {
+            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(i);
+            finish();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         // Firebase Auth:
         auth = FirebaseAuth.getInstance();
 
-        // Register Button:
-
+        // SIGN-UP KNAPP: om man trycker på den kommer man till RegisterActivity.
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,8 +65,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        //Login Button:
-
+        /*LOGIN-KNAPP: - Hämtar text från Edittexts, skickar in i signInWithEmailAndPassword,
+        och om task.isSuccessful så skickas man till Main.*/
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
                 String pass_text  = passETLogin.getText().toString();
 
 
-                // Checking if it is empty
+                // Kollar om fält är tomma
                 if (TextUtils.isEmpty(email_text) || TextUtils.isEmpty(pass_text)) {
                     Toast.makeText(LoginActivity.this, "Please  fill the Fields", Toast.LENGTH_SHORT).show();
                 } else {
