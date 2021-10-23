@@ -28,6 +28,15 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+
+// IDEAS:
+/*
+1. 3st Fragment i Home/Main - "Home" där chattar är, "Friends" i mitten, och "Maps" på tredje. Alternativ "Search" på tredje
+2. Maps ska vara en karta med prickar där användarna är, och en lista på användarna. Dvs. vänner.
+3. Action bar - Logout och Edit Profile
+Blabla
+*/
+
 public class MainActivity extends AppCompatActivity {
 
     // Firebase
@@ -55,17 +64,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Tab Layout and Viewpager instansiering
+        // Instansierar tabLayout och viewpager
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         ViewPager viewPager = findViewById(R.id.view_pager);
 
+        // Skapar ny ViewpagerAdapter
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
+        // Skapar fragment i viewPagerAdapter
         viewPagerAdapter.addFragment(new ChatsFragment(), "Chats");
         viewPagerAdapter.addFragment(new UserFragment(), "Users");
 
+        // Sätter adapter i viewpager
         viewPager.setAdapter(viewPagerAdapter);
 
+        // Kopplar ihop tablayout med viewpager?
         tabLayout.setupWithViewPager(viewPager);
 
 
@@ -109,11 +122,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    // Class ViewPagerAdapter
+    // Class ViewPagerAdapter, fragments
     class ViewPagerAdapter extends FragmentPagerAdapter {
+
+        // Skapar ArrayLists med fragment och strings
         private ArrayList<Fragment> fragments;
         private ArrayList<String> titles;
 
+        // Skapar konstruktor för fragment, skickar in FragmentManager
         ViewPagerAdapter(FragmentManager fm) {
             super(fm);
             this.fragments = new ArrayList<>();
@@ -131,7 +147,9 @@ public class MainActivity extends AppCompatActivity {
         public int getCount() {
             return fragments.size();
         }
+
         public void addFragment(Fragment fragment, String title) {
+            // Lägger in fragment och title i Arraylists
             fragments.add(fragment);
             titles.add(title);
         }
